@@ -5,7 +5,7 @@ var io = require('socket.io')(http);
 var mongoChat = require('./app/mongo_chat');
 
 var ip = "127.0.0.1";
-var port = 3000;
+var port = process.env.NODE_PORT ||3000;
 var users = {};
 var WhisperChek = false;
 var storage=[];
@@ -28,5 +28,5 @@ app.get('/', function (req, res) {
         });
     });
 http.listen(port,ip, function () {
-    console.log('listening on *:3000');
+    console.log('listening on ' + port);
 });
